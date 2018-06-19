@@ -1,7 +1,7 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(new MyApp());
+//void main() => runApp(new MyApp());
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -18,8 +18,9 @@ class MyApp extends StatelessWidget {
         // "hot reload" (press "r" in the console where you ran "flutter run",
         // or press Run > Flutter Hot Reload in IntelliJ). Notice that the
         // counter didn't reset back to zero; the application is not restarted.
-        primarySwatch: Colors.deepPurple,
-      ),
+          primarySwatch: Colors.amber,
+          primaryColor: Colors.white,
+          accentColor: Colors.amberAccent),
       home: new MyHomePage(title: 'Infinite word pair list~'),
     );
   }
@@ -164,7 +165,7 @@ class RandomWordState extends State<StatefulWidget> {
       ),
       trailing: new Icon(
         alreadySaved ? Icons.favorite : Icons.favorite_border,
-        color: alreadySaved ? Colors.deepPurple : null,
+        color: alreadySaved ? Colors.amberAccent : null,
       ),
       onTap: () {
         setState(() {
@@ -189,7 +190,7 @@ class RandomWordState extends State<StatefulWidget> {
         );
       });
       final dividers =
-          ListTile.divideTiles(context: context, tiles: tiles).toList();
+      ListTile.divideTiles(context: context, tiles: tiles).toList();
       return new Scaffold(
         appBar: new AppBar(
           title: new Text('Fav list'),
