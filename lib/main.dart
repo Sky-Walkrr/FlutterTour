@@ -5,6 +5,7 @@ import 'animationPractice.dart';
 import 'layout.dart';
 import 'loadAssetPractice.dart';
 import 'newPage.dart';
+import 'profile.dart';
 
 //void main() => runApp(new MyApp());
 //void main() => runApp(new LayoutPracticeWidget());
@@ -17,6 +18,7 @@ void main() => runApp(
       /// to use routes, must keep only one MaterialApp instance,
       /// see https://stackoverflow.com/questions/49132299/could-not-find-a-generator-for-route
       '/new': (BuildContext context) => NewPage(),
+      '/profile': (BuildContext context) => ProfilePage(),
     },
   )
 );
@@ -127,7 +129,8 @@ class _MyHomePageState extends State<MyHomePage> {
 //      ),
       floatingActionButton: new FloatingActionButton(
         onPressed: (){
-          Navigator.of(context).pushNamed('/new');
+//          Navigator.of(context).pushNamed('/new');
+          Navigator.of(context).pushNamed('/profile');
         },
         tooltip: 'Increment',
         child: new Icon(Icons.add_shopping_cart),
