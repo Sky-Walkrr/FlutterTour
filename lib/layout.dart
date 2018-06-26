@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(new LayoutPracticeWidget());
+//void main() => runApp(new LayoutPracticeWidget());
 
 class LayoutPracticeWidget extends StatelessWidget {
   @override
@@ -11,29 +11,31 @@ class LayoutPracticeWidget extends StatelessWidget {
         children: <Widget>[
           new Expanded(
               child: new Column(
-            crossAxisAlignment: CrossAxisAlignment.start, // 起始对齐
-            children: <Widget>[
-              new Container(
-                padding: const EdgeInsets.fromLTRB(0.0, 8.0, 0.0, 8.0),
-                child: new Text(
-                  'Spring Inaction',
-                  style: new TextStyle(
-                      color: Colors.black,
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              new Text(
-                'Craig Walls',
-                style: new TextStyle(color: Colors.grey[800], fontSize: 16.0),
-              )
-            ],
-          )),
-          new Icon(Icons.favorite, color: Colors.deepPurple),
-          new Container(
-            padding: const EdgeInsets.only(left: 8.0),
-            child: new Text('Flutter'),
-          )
+                crossAxisAlignment: CrossAxisAlignment.start, // 起始对齐
+                children: <Widget>[
+                  new Container(
+                    padding: const EdgeInsets.fromLTRB(0.0, 8.0, 0.0, 8.0),
+                    child: new Text(
+                      'Spring Inaction',
+                      style: new TextStyle(
+                          color: Colors.black,
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  new Text(
+                    'Craig Walls',
+                    style: new TextStyle(
+                        color: Colors.grey[800], fontSize: 16.0),
+                  )
+                ],
+              )),
+//          new Icon(Icons.favorite, color: Colors.deepPurple),
+//          new Container(
+//            padding: const EdgeInsets.only(left: 8.0),
+//            child: new Text('Flutter'),
+//          )
+        new MyStateWidget()
         ],
       ),
     );
@@ -82,7 +84,9 @@ Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese Alps. Situate
   }
 
   buildBtnColumn(BuildContext context, IconData icon, String text) {
-    Color color = Theme.of(context).primaryColor;
+    Color color = Theme
+        .of(context)
+        .primaryColor;
 
     return new Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -101,4 +105,53 @@ Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese Alps. Situate
       ],
     );
   }
+}
+
+
+class MyStateWidget extends StatefulWidget {
+  @override
+  _MyState createState() => new _MyState();
+
+}
+
+class _MyState extends State<MyStateWidget> {
+  int _favCount = 9;
+  bool _isFav = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return new InkWell(
+      borderRadius: const BorderRadius.all(const Radius.circular(50.0)),
+      splashColor: Colors.redAccent[100],
+      onTap: _toggleState,
+      child: new Container(
+        child: new Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            new Icon(_isFav ? Icons.favorite : Icons.favorite_border,
+                color: _isFav ? Colors.red : Colors.grey),
+            new SizedBox(
+              width: 50.0,
+              child: new Container(
+                padding: const EdgeInsets.all(8.0),
+                child: new Text('$_favCount'),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  _toggleState() {
+    setState(() {
+      _isFav = !_isFav;
+      if (_isFav) {
+        _favCount ++;
+      } else {
+        _favCount --;
+      }
+    });
+  }
+
 }

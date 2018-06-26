@@ -1,28 +1,47 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 
+import 'animationPractice.dart';
+import 'layout.dart';
+import 'loadAssetPractice.dart';
+import 'newPage.dart';
+
 //void main() => runApp(new MyApp());
+//void main() => runApp(new LayoutPracticeWidget());
+//void main() => runApp(new LoadAssetPractice());
+//void main() => runApp(new AnimationPractice());
+void main() => runApp(
+  new MaterialApp(
+    home: new MyApp(),
+    routes: <String, WidgetBuilder> {
+      /// to use routes, must keep only one MaterialApp instance,
+      /// see https://stackoverflow.com/questions/49132299/could-not-find-a-generator-for-route
+      '/new': (BuildContext context) => NewPage(),
+    },
+  )
+);
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-      title: 'Flutter Demo',
-      theme: new ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or press Run > Flutter Hot Reload in IntelliJ). Notice that the
-        // counter didn't reset back to zero; the application is not restarted.
-          primarySwatch: Colors.amber,
-          primaryColor: Colors.white,
-          accentColor: Colors.amberAccent),
-      home: new MyHomePage(title: 'Infinite word pair list~'),
-    );
+    return new MyHomePage(title: 'InfinityWords');
+//    return new MaterialApp(
+//      title: 'Flutter Demo',
+//      theme: new ThemeData(
+//        // This is the theme of your application.
+//        //
+//        // Try running your application with "flutter run". You'll see the
+//        // application has a blue toolbar. Then, without quitting the app, try
+//        // changing the primarySwatch below to Colors.green and then invoke
+//        // "hot reload" (press "r" in the console where you ran "flutter run",
+//        // or press Run > Flutter Hot Reload in IntelliJ). Notice that the
+//        // counter didn't reset back to zero; the application is not restarted.
+//          primarySwatch: Colors.amber,
+//          primaryColor: Colors.white,
+//          accentColor: Colors.amberAccent),
+//      home: new MyHomePage(title: 'Infinite word pair list~'),
+//    );
   }
 }
 
@@ -107,7 +126,9 @@ class _MyHomePageState extends State<MyHomePage> {
 //        ),
 //      ),
       floatingActionButton: new FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: (){
+          Navigator.of(context).pushNamed('/new');
+        },
         tooltip: 'Increment',
         child: new Icon(Icons.add_shopping_cart),
       ), // This trailing comma makes auto-formatting nicer for build methods.
