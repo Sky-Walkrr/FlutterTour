@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 class ProfilePage extends StatelessWidget {
   @override
@@ -9,14 +10,14 @@ class ProfilePage extends StatelessWidget {
     );
     final primaryTextStyle = new TextStyle(color: Colors.white, fontSize: 16.0);
     final secondaryTextStyle =
-        new TextStyle(color: Colors.grey.shade300, fontSize: 14.0);
+    new TextStyle(color: Colors.grey.shade300, fontSize: 14.0);
     final subTitleTextStyle =
-        new TextStyle(color: Colors.black, fontSize: 16.0);
+    new TextStyle(color: Colors.black, fontSize: 16.0);
     final header = new Container(
         decoration: new BoxDecoration(
             gradient: const RadialGradient(
-          colors: [Colors.deepPurple, Colors.redAccent],
-        )),
+              colors: [Colors.deepPurple, Colors.redAccent],
+            )),
         child: new Container(
           padding: const EdgeInsets.all(16.0),
           margin: const EdgeInsets.only(top: 30.0),
@@ -121,57 +122,36 @@ class ProfilePage extends StatelessWidget {
           ),
         ));
 
+    final bottomBar = new CupertinoTabBar(
+      items: [
+        new BottomNavigationBarItem(
+            icon: new Icon(Icons.home,),
+            title: new Text('')),
+        new BottomNavigationBarItem(
+            icon: new Icon(Icons.bookmark,),
+            title: new Text('')),
+        new BottomNavigationBarItem(
+            icon: new Icon(Icons.thumb_up,),
+            title: new Text('')),
+        new BottomNavigationBarItem(
+            icon: new Icon(Icons.person,),
+            title: new Text('')),
+      ],
+      activeColor: Colors.amberAccent,
+      inactiveColor: Colors.blueGrey,
+      currentIndex: 0,
+      onTap: ,
+    );
+
     return new Scaffold(
       body: new Column(
         children: <Widget>[
           header,
           new Expanded(
               child: new Center(
-            child: new Text('Bonjour'),
-          )),
-          new Container(
-            color: Colors.white,
-            child: new Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                new InkWell(
-                  radius: 30.0,
-                  borderRadius:
-                      const BorderRadius.all(const Radius.circular(30.0)),
-                  child: new Container(
-                    padding: const EdgeInsets.symmetric(vertical: 10.0),
-                    child: new Icon(Icons.home),
-                  ),
-                ),
-                new InkWell(
-                  radius: 30.0,
-                  borderRadius:
-                      const BorderRadius.all(const Radius.circular(30.0)),
-                  child: new Container(
-                    padding: const EdgeInsets.symmetric(vertical: 10.0),
-                    child: new Icon(Icons.bookmark),
-                  ),
-                ),
-                new InkWell(
-                  radius: 30.0,
-                  borderRadius:
-                      const BorderRadius.all(const Radius.circular(30.0)),
-                  child: new Container(
-                    padding: const EdgeInsets.symmetric(vertical: 10.0),
-                    child: new Icon(Icons.thumb_up),
-                  ),
-                ),
-                new InkWell(
-                  radius: 30.0,
-                  borderRadius:
-                      const BorderRadius.all(const Radius.circular(30.0)),
-                  child: new Container(
-                      padding: const EdgeInsets.symmetric(vertical: 10.0),
-                      child: new Icon(Icons.person)),
-                ),
-              ],
-            ),
-          )
+                child: new Text('Bonjour'),
+              )),
+          bottomBar
         ],
       ),
     );
